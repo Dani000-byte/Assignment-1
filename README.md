@@ -55,11 +55,12 @@ Step 3: Database Schema Design
 
    <img width="386" height="262" alt="image" src="https://github.com/user-attachments/assets/73d94b57-45a7-44f8-8aac-ada7884fe233" />
 
-    	SQL Schema Creation
 
-      <img width="389" height="217" alt="image" src="https://github.com/user-attachments/assets/f1139191-966d-4f49-82a9-4367eb2f2d41" />
+       	SQL Schema Creation
 
-      <img width="390" height="153" alt="image" src="https://github.com/user-attachments/assets/a23d95d4-c2f3-4f39-b0c5-9d016ecead7a" />
+   <img width="389" height="217" alt="image" src="https://github.com/user-attachments/assets/ac5087db-fed3-4f15-a114-3ebb8dabd039" />
+
+   <img width="390" height="153" alt="image" src="https://github.com/user-attachments/assets/fd6c7ac7-44b4-443e-a0a5-d84fbd6de577" />
 
 
 
