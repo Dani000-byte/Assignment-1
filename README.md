@@ -75,6 +75,8 @@ ER Diagram Descriptions
 
 •	transactions acts as junction table with additional sales data
 
+📰Reference:https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/Analytic-Functions.html?
+
 Step 4: Window Functions Implementation 
 
 1. Ranking Functions
