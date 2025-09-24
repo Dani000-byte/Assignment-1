@@ -19,6 +19,8 @@ Expected Outcome
 
 Develop analytical insights to identify top products per region/quarter, segment customers for targeted marketing campaigns, track sales momentum through running totals and growth rates, and provide data-driven recommendations for inventory optimization and regional expansion strategies.
 
+References:https://www.naeb.gov.rw/publications/reports
+
 Step 2: Success Criteria (5 Measurable Goals)
 
 1.	Top 5 products per region/quarter → RANK() function
@@ -264,7 +266,7 @@ ORDER BY total_spent DESC;
 
 References about 	Coffee industry market reports in Rwanda
 
-1:https://www.naeb.gov.rw/publications/reports
+
 
 
 
