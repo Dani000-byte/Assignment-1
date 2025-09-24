@@ -258,6 +258,8 @@ GROUP BY c.customer_id, c.name
 
 ORDER BY total_spent DESC;
 
+References:https://www.naeb.gov.rw/publications/reports
+
 
 
 
