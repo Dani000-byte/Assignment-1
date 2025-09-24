@@ -141,6 +141,8 @@ LEFT JOIN transactions t ON c.customer_id = t.customer_id
 
 GROUP BY c.customer_id, c.name;
 
+📰References:https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/ROW_NUMBER.html?
+
 2. Aggregate Functions
    
 Running Totals - SUM() OVER()
