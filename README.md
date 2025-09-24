@@ -258,7 +258,8 @@ GROUP BY c.customer_id, c.name
 
 ORDER BY total_spent DESC;
 
-References:https://www.naeb.gov.rw/publications/reports
+References about 	Coffee industry market reports in Rwanda
+1:https://www.naeb.gov.rw/publications/reports
 
 
 
