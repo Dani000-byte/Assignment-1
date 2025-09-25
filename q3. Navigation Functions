@@ -1,0 +1,19 @@
+🛠 Navigation Functions (LAG, LEAD)
+
+Measure month-over-month sales growth
+-- Month-over-month sales growth --
+
+WITH monthly_sales AS (
+    SELECT 
+        TO_CHAR(sale_date, 'YYYY-MM') AS month,
+        SUM(amount) AS total_sales
+    FROM transactions
+    GROUP BY TO_CHAR(sale_date, 'YYYY-MM')
+)
+SELECT 
+    month,
+    total_sales,
+    LAG(total_sales, 1) OVER (ORDER BY month) AS prev_month_sales,
+    ROUND(((total_sales - LAG(total_sales, 1) OVER (ORDER BY month)) / 
+           LAG(total_sales, 1) OVER (ORDER BY month)) * 100, 2) AS growth_percent
+FROM monthly_sales;
