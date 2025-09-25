@@ -1,0 +1,11 @@
+Aggregate Functions (SUM, AVG, MIN, MAX with window frames)
+
+-- Running monthly totals--
+
+SELECT 
+    TO_CHAR(sale_date, 'YYYY-MM') AS month,
+    SUM(amount) AS monthly_sales,
+    SUM(SUM(amount)) OVER (ORDER BY TO_CHAR(sale_date, 'YYYY-MM')) AS running_total
+FROM transactions
+GROUP BY TO_CHAR(sale_date, 'YYYY-MM')
+ORDER BY month;
