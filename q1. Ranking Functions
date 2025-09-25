@@ -1,13 +1,36 @@
-🛠 Ranking Functions (ROW_NUMBER, RANK, DENSE_RANK, PERCENT_RANK)
-
--- Top customers by revenue using different ranking functions
-
+•	ROW_NUMBER() - Sequential ranking
+-- Top customers by total revenue with sequential ranking
 SELECT 
-    customer_id,
-    SUM(amount) AS total_revenue,
-    ROW_NUMBER() OVER (ORDER BY SUM(amount) DESC) AS row_num,
-    RANK() OVER (ORDER BY SUM(amount) DESC) AS rank_num,
-    DENSE_RANK() OVER (ORDER BY SUM(amount) DESC) AS dense_rank_num,
-    PERCENT_RANK() OVER (ORDER BY SUM(amount) DESC) AS percent_rank_num
-FROM transactions
-GROUP BY customer_id;
+    c.name,
+    c.region,
+    SUM(t.amount) as total_revenue,
+    ROW_NUMBER() OVER (ORDER BY SUM(t.amount) DESC) as revenue_rank
+FROM customers c
+JOIN transactions t ON c.customer_id = t.customer_id
+GROUP BY c.customer_id, c.name, c.region
+ORDER BY total_revenue DESC;
+•	RANK() - Products per region
+-- Top 5 products per region with tied rankings --
+
+SELECT region, product_name, total_sales, product_rank
+FROM (
+    SELECT 
+        c.region,
+        p.name as product_name,
+        SUM(t.amount) as total_sales,
+        RANK() OVER (PARTITION BY c.region ORDER BY SUM(t.amount) DESC) as product_rank
+    FROM transactions t
+    JOIN customers c ON t.customer_id = c.customer_id
+    JOIN products p ON t.product_id = p.product_id
+    GROUP BY c.region, p.product_id, p.name
+)
+WHERE product_rank <= 5;
+DENSE_RANK() - Customer performance tiers
+-- Customer performance tiers without gaps
+SELECT 
+    c.name,
+    COUNT(t.transaction_id) as purchase_frequency,
+    DENSE_RANK() OVER (ORDER BY COUNT(t.transaction_id) DESC) as performance_tier
+FROM customers c
+LEFT JOIN transactions t ON c.customer_id = t.customer_id
+GROUP BY c.customer_id, c.name;
