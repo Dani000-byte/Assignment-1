@@ -1,0 +1,20 @@
+•	NTILE(4) - Customer quartiles
+-- Segment customers into 4 quartiles by purchase value
+SELECT 
+    c.name,
+    SUM(t.amount) as total_spent,
+    NTILE(4) OVER (ORDER BY SUM(t.amount)) as customer_quartile
+FROM customers c
+JOIN transactions t ON c.customer_id = t.customer_id
+GROUP BY c.customer_id, c.name
+ORDER BY total_spent DESC;
+•	CUME_DIST() - Cumulative distribution
+-- Cumulative distribution of customer spending
+SELECT 
+    c.name,
+    SUM(t.amount) as total_spent,
+    ROUND(CUME_DIST() OVER (ORDER BY SUM(t.amount)) * 100, 2) as percentile
+FROM customers c
+JOIN transactions t ON c.customer_id = t.customer_id
+GROUP BY c.customer_id, c.name
+ORDER BY total_spent DESC;
