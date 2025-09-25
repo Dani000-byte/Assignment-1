@@ -1,4 +1,4 @@
-Ranking Functions (ROW_NUMBER, RANK, DENSE_RANK, PERCENT_RANK)
+🛠 Ranking Functions (ROW_NUMBER, RANK, DENSE_RANK, PERCENT_RANK)
 
 -- Top customers by revenue using different ranking functions
 
