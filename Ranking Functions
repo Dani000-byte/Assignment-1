@@ -1,0 +1,16 @@
+Ranking Functions (ROW_NUMBER, RANK, DENSE_RANK, PERCENT_RANK)
+
+-- Top customers by revenue using different ranking functions
+
+SELECT 
+
+    customer_id,
+    SUM(amount) AS total_revenue,
+    ROW_NUMBER() OVER (ORDER BY SUM(amount) DESC) AS row_num,
+    RANK() OVER (ORDER BY SUM(amount) DESC) AS rank_num,
+    DENSE_RANK() OVER (ORDER BY SUM(amount) DESC) AS dense_rank_num,
+    PERCENT_RANK() OVER (ORDER BY SUM(amount) DESC) AS percent_rank_num
+
+FROM transactions
+
+GROUP BY customer_id;
