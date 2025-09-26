@@ -130,15 +130,13 @@ Step 3: Database Schema Design
 
    ER Diagram 
 
-   <img width="333" height="325" alt="image" src="https://github.com/user-attachments/assets/e6bb89b2-1d38-4a0e-bbb2-d1158d093eb4" />
+  <img width="624" height="579" alt="image" src="https://github.com/user-attachments/assets/089c9caa-8e30-4ae5-94b6-84999bc72e9d" />
 
 ER Diagram Descriptions
 
-•	customers (1) ←→ (M) transactions
+CUSTOMERS ||--o{ TRANSACTIONS → One customer can have many transactions.
 
-•	products (1) ←→ (M) transactions
-
-•	transactions acts as junction table with additional sales data
+PRODUCTS ||--o{ TRANSACTIONS → One product can appear in many transactions.
 
 📰Reference:https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/Analytic-Functions.html?
 
