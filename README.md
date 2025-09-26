@@ -57,6 +57,21 @@ Step 3: Database Schema Design
 
    <img width="1174" height="520" alt="image" src="https://github.com/user-attachments/assets/a1916901-e655-4bdd-86a1-8e2d02dd1596" /><br>
 
+   Queries for Customer
+
+     INSERT INTO customers (customer_id, name, region, registration_date, customer_type)
+     VALUES 
+      (1, 'Alice Uwase', 'Kigali', '2024-01-15', 'Retail'),
+      (2, 'John Habimana', 'Musanze', '2024-02-10', 'Wholesale'),
+      (3, 'Claire Mukamana', 'Huye', '2024-03-05', 'Retail'),
+      (4, 'Eric Nshimiyimana', 'Rubavu', '2024-04-20', 'Wholesale'),
+      (5, 'Sarah Ingabire', 'Nyagatare', '2024-05-12', 'Retail'),
+      (6, 'David Mugisha', 'Gisenyi', '2024-06-01', 'Retail'),
+      (7, 'Aline Uwamahoro', 'Rwamagana', '2024-06-18', 'Wholesale'),
+      (8, 'Patrick Niyonzima', 'Butare', '2024-07-05', 'Retail'),
+      (9, 'Diane Iradukunda', 'Karongi', '2024-07-22', 'Wholesale'),
+      (10, 'Samuel Byiringiro', 'Muhanga', '2024-08-10', 'Retail');
+
    
    <img width="378" height="251" alt="image" src="https://github.com/user-attachments/assets/6bacb0be-62b4-4096-8c70-7c64184d6710" /><br>
 
