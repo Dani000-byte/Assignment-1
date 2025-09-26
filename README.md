@@ -75,6 +75,24 @@ Step 3: Database Schema Design
    
    <img width="378" height="251" alt="image" src="https://github.com/user-attachments/assets/6bacb0be-62b4-4096-8c70-7c64184d6710" /><br>
 
+   <img width="1121" height="347" alt="image" src="https://github.com/user-attachments/assets/fcf90333-3a98-450c-acbe-290e19ccd345" /><br>
+   
+   Querie for products
+   
+    INSERT INTO products (product_id, product_name, product_category, unit_price)
+    VALUES
+         (1001, 'Arabica Premium Bourbon', 'Premium', 3500),
+         (1002, 'Arabica Standard Bourbon', 'Standard', 2800),
+         (1003, 'Robusta Green Beans', 'Standard', 2200),
+         (1004, 'Espresso Blend', 'Premium', 4000),
+         (1005, 'House Coffee Mix', 'Standard', 2500),
+         (1006, 'Cold Brew Pack', 'Specialty', 4200),
+         (1007, 'Organic Arabica', 'Premium', 3800),
+         (1008, 'Dark Roast Blend', 'Standard', 2700),
+         (1009, 'Instant Coffee Classic', 'Standard', 1800),
+         (1010, 'Decaf Arabica', 'Specialty', 3600);
+
+
    <img width="386" height="262" alt="image" src="https://github.com/user-attachments/assets/73d94b57-45a7-44f8-8aac-ada7884fe233" /><br>
 
 
