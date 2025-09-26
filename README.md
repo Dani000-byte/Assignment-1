@@ -103,6 +103,30 @@ Step 3: Database Schema Design
    
 
    <img width="390" height="153" alt="image" src="https://github.com/user-attachments/assets/fd6c7ac7-44b4-443e-a0a5-d84fbd6de577" /><br>
+   
+   Table creation for sale_transactions
+
+   <img width="1113" height="313" alt="image" src="https://github.com/user-attachments/assets/9f208561-9787-4129-b4e7-cad4d5bc88d8" /><br>
+
+   queries for sale_transactions
+
+     INSERT INTO transactions (transaction_id, customer_id, product_id, transaction_date, quantity_kg, unit_price, total_amount)
+    VALUES
+         (1, 1, 1001, '2024-01-20', 5, 3500, 17500),
+         (2, 2, 1003, '2024-02-12', 10, 2200, 22000),
+         (3, 3, 1002, '2024-03-07', 3, 2800, 8400),
+         (4, 4, 1004, '2024-04-25', 8, 4000, 32000),
+         (5, 5, 1005, '2024-05-14', 2, 2500, 5000),
+         (6, 6, 1007, '2024-06-05', 6, 3800, 22800),
+         (7, 7, 1006, '2024-06-20', 4, 4200, 16800),
+         (8, 8, 1008, '2024-07-08', 7, 2700, 18900),
+         (9, 9, 1009, '2024-07-23', 12, 1800, 21600),
+         (10, 10, 1010, '2024-08-12', 5, 3600, 18000);
+
+
+   <img width="916" height="582" alt="image" src="https://github.com/user-attachments/assets/987ea6c5-ee5f-4de9-a26d-57270731ed4d" /><br>
+
+
 
    ER Diagram 
 
