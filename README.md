@@ -92,6 +92,7 @@ Step 3: Database Schema Design
          (1009, 'Instant Coffee Classic', 'Standard', 1800),
          (1010, 'Decaf Arabica', 'Specialty', 3600);
 
+   <img width="759" height="564" alt="image" src="https://github.com/user-attachments/assets/bc18f5cf-f1ca-4b5a-893a-c5c9af5c6c24" /><br>
 
    <img width="386" height="262" alt="image" src="https://github.com/user-attachments/assets/73d94b57-45a7-44f8-8aac-ada7884fe233" /><br>
 
