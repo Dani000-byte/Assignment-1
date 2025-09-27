@@ -148,23 +148,24 @@ Step 4: Window Functions Implementation
 
 -- Top customers by total revenue with sequential ranking--
 
-SELECT 
+    SELECT 
+      sub.customer_id,
+      sub.name,
+      sub.region,
+      sub.total_revenue
+    FROM (
+    SELECT 
+        c.customer_id,
+        c.name,
+        c.region,
+        SUM(t.total_amount) AS total_revenue
+    FROM customers c
+    JOIN transactions t 
+        ON c.customer_id = t.customer_id
+    GROUP BY c.customer_id, c.name, c.region
+    ) AS sub
+    ORDER BY sub.total_revenue DESC;
 
-    c.name,
-    
-    c.region,
-    
-    SUM(t.amount) as total_revenue,
-    
-    ROW_NUMBER() OVER (ORDER BY SUM(t.amount) DESC) as revenue_rank
-    
-FROM customers c
-
-JOIN transactions t ON c.customer_id = t.customer_id
-
-GROUP BY c.customer_id, c.name, c.region
-
-ORDER BY total_revenue DESC;
 
 •	RANK() - Products per region
 
@@ -325,7 +326,7 @@ GROUP BY c.customer_id, c.name
 
 ORDER BY total_spent DESC;
 
-References about 	Coffee industry market reports in Rwanda
+
 
 
 
