@@ -157,11 +157,11 @@ Step 4: Window Functions Implementation
         PARTITION BY c.region, QUARTER(t.transaction_date)
         ORDER BY SUM(t.quantity_kg) DESC
     ) AS product_rank
-FROM transactions t
-JOIN customers c ON t.customer_id = c.customer_id
-JOIN products p ON t.product_id = p.product_id
-GROUP BY c.region, sales_quarter, p.product_name
-ORDER BY c.region, sales_quarter, product_rank;
+      FROM transactions t
+     JOIN customers c ON t.customer_id = c.customer_id
+    JOIN products p ON t.product_id = p.product_id
+    GROUP BY c.region, sales_quarter, p.product_name
+    ORDER BY c.region, sales_quarter, product_rank;
 
 <img width="617" height="414" alt="image" src="https://github.com/user-attachments/assets/986c1e8c-83c4-40a8-974c-30e664219e4b" />
 
@@ -169,16 +169,16 @@ ORDER BY c.region, sales_quarter, product_rank;
 
 Running Monthly Sales Totals
 
-SELECT 
+    SELECT 
     DATE_FORMAT(transaction_date, '%Y-%m') AS sales_month,
     SUM(total_amount) AS monthly_sales,
     SUM(SUM(total_amount)) OVER (
         ORDER BY DATE_FORMAT(transaction_date, '%Y-%m')
         ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
     ) AS running_total
-FROM transactions
-GROUP BY sales_month
-ORDER BY sales_month;
+    FROM transactions
+    GROUP BY sales_month
+    ORDER BY sales_month;
 
 <img width="419" height="274" alt="image" src="https://github.com/user-attachments/assets/d89eb79a-c86b-4710-814c-8e5f6ddfa565" />
 
@@ -200,16 +200,16 @@ ORDER BY sales_month;
    
 •	Segment customers into 4 groups based on purchase frequency/value
 
-SELECT 
+    SELECT 
     c.customer_id,
     c.name,
     COUNT(t.transaction_id) AS total_purchases,
     SUM(t.total_amount) AS total_spent,
     NTILE(4) OVER (ORDER BY SUM(t.total_amount) DESC) AS quartile_segment
-FROM customers c
-JOIN transactions t ON c.customer_id = t.customer_id
-GROUP BY c.customer_id, c.name
-ORDER BY quartile_segment, total_spent DESC;
+    FROM customers c
+    JOIN transactions t ON c.customer_id = t.customer_id
+    GROUP BY c.customer_id, c.name
+    ORDER BY quartile_segment, total_spent DESC;
 
 <img width="683" height="355" alt="image" src="https://github.com/user-attachments/assets/54794a5c-3755-492a-9d97-afa88862f8c5" />
 
@@ -217,7 +217,7 @@ ORDER BY quartile_segment, total_spent DESC;
     
 •	Smooth out seasonal fluctuations to identify underlying trends
 
-SELECT 
+    SELECT 
     DATE_FORMAT(transaction_date, '%Y-%m') AS sales_month,
     SUM(total_amount) AS monthly_sales,
     ROUND(
@@ -226,9 +226,9 @@ SELECT
             ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
         ), 2
     ) AS moving_avg_3m
-FROM transactions
-GROUP BY sales_month
-ORDER BY sales_month;
+    FROM transactions
+    GROUP BY sales_month
+    ORDER BY sales_month;
 
 <img width="1101" height="473" alt="image" src="https://github.com/user-attachments/assets/a0d3c765-b7e5-45a2-bec8-38b9cfaed04e" />
 
