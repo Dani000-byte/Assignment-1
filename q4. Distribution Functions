@@ -9,3 +9,17 @@ FROM customers c
 JOIN transactions t ON c.customer_id = t.customer_id
 GROUP BY c.customer_id, c.name
 ORDER BY quartile_segment, total_spent DESC;
+
+.Month Moving Average Sales
+SELECT 
+    DATE_FORMAT(transaction_date, '%Y-%m') AS sales_month,
+    SUM(total_amount) AS monthly_sales,
+    ROUND(
+        AVG(SUM(total_amount)) OVER (
+            ORDER BY DATE_FORMAT(transaction_date, '%Y-%m')
+            ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+        ), 2
+    ) AS moving_avg_3m
+FROM transactions
+GROUP BY sales_month
+ORDER BY sales_month;
