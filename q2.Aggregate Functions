@@ -1,22 +1,11 @@
-Running Totals - SUM() OVER()
-
--- Monthly running sales totals --
+Aggregate Function
 SELECT 
-    TO_CHAR(sale_date, 'YYYY-MM') as month,
-    SUM(amount) as monthly_sales,
-    SUM(SUM(amount)) OVER (ORDER BY TO_CHAR(sale_date, 'YYYY-MM') 
-                          ROWS UNBOUNDED PRECEDING) as running_total
+    DATE_FORMAT(transaction_date, '%Y-%m') AS sales_month,
+    SUM(total_amount) AS monthly_sales,
+    SUM(SUM(total_amount)) OVER (
+        ORDER BY DATE_FORMAT(transaction_date, '%Y-%m')
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS running_total
 FROM transactions
-GROUP BY TO_CHAR(sale_date, 'YYYY-MM')
-ORDER BY month;
-•	Moving Averages - AVG() OVER()
--- 3-month moving average of sales --
-SELECT 
-    TO_CHAR(sale_date, 'YYYY-MM') as month,
-    SUM(amount) as monthly_sales,
-    AVG(SUM(amount)) OVER (ORDER BY TO_CHAR(sale_date, 'YYYY-MM') 
-                          ROWS 2 PRECEDING) as three_month_avg
-FROM transactions
-GROUP BY TO_CHAR(sale_date, 'YYYY-MM')
-ORDER BY month;
- 
+GROUP BY sales_month
+ORDER BY sales_month;
