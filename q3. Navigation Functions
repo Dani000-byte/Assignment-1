@@ -1,31 +1,11 @@
-•	LAG() - Month-over-month growth
-
--- Month-over-month sales growth percentage--
 SELECT 
-    month,
-    monthly_sales,
-    previous_month_sales,
-    CASE 
-        WHEN previous_month_sales IS NOT NULL THEN
-            ROUND(((monthly_sales - previous_month_sales) / previous_month_sales) * 100, 2)
-    END as growth_percentage
-FROM (
-    SELECT 
-        TO_CHAR(sale_date, 'YYYY-MM') as month,
-        SUM(amount) as monthly_sales,
-        LAG(SUM(amount)) OVER (ORDER BY TO_CHAR(sale_date, 'YYYY-MM')) as previous_month_sales
-    FROM transactions
-    GROUP BY TO_CHAR(sale_date, 'YYYY-MM')
-)
-ORDER BY month;
-
-•	LEAD() - Forward-looking analysis
-
--- Compare current month with next month --
-SELECT 
-    month,
-    monthly_sales,
-    LEAD(SUM(amount)) OVER (ORDER BY TO_CHAR(sale_date, 'YYYY-MM')) as next_month_sales
+    DATE_FORMAT(transaction_date, '%Y-%m') AS sales_month,
+    SUM(total_amount) AS monthly_sales,
+    LAG(SUM(total_amount)) OVER (ORDER BY DATE_FORMAT(transaction_date, '%Y-%m')) AS prev_month_sales,
+    ROUND(
+        ( (SUM(total_amount) - LAG(SUM(total_amount)) OVER (ORDER BY DATE_FORMAT(transaction_date, '%Y-%m')))
+          / LAG(SUM(total_amount)) OVER (ORDER BY DATE_FORMAT(transaction_date, '%Y-%m')) ) * 100, 2
+    ) AS month_growth_percent
 FROM transactions
-GROUP BY TO_CHAR(sale_date, 'YYYY-MM')
-ORDER BY month;
+GROUP BY sales_month
+ORDER BY sales_month;
